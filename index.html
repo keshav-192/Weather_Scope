@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherScope - Interactive Weather App</title>
+
+    <link rel="stylesheet" href="weather.css">
+    
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="weather-container">
+        
+        
+        <header class="app-header">
+            <h1 class="app-title">WeatherScope</h1>
+            <p class="app-subtitle">Your comprehensive weather companion</p>
+        </header>
+
+        <section class="search-section">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    class="city-search-input" 
+                    placeholder="Enter city name..."
+                    onkeypress="handleSearchKeyPress(event)"
+                >
+                <button class="search-button" onclick="searchWeather()">
+                    🔍
+                </button>
+                <button class="location-button" onclick="getCurrentLocationWeather()">
+                    📍
+                </button>
+            </div>
+        </section>
+
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <main class="main-weather-card" id="mainWeatherCard" style="display: none;">
+            <h2 class="current-location" id="currentLocation">Loading...</h2>
+            <p class="current-date" id="currentDate"></p>
+            
+            <div class="weather-icon-container">
+                <div class="main-weather-icon" id="mainWeatherIcon">☀️</div>
+            </div>
+            
+            <div class="current-temperature" id="currentTemperature">--°</div>
+            <div class="weather-description" id="weatherDescription">Loading...</div>
+            <div class="feels-like-temp" id="feelsLikeTemp">Feels like --°</div>
+        </main>
+
+        <section class="weather-details-grid" id="weatherDetailsGrid" style="display: none;">
+            <div class="weather-detail-card">
+                <div class="detail-title">
+                    <span class="detail-icon">💨</span>Wind Speed
+                </div>
+                <div class="detail-value" id="windSpeed">-- km/h</div>
+            </div>
+            
+            <div class="weather-detail-card">
+                <div class="detail-title">
+                    <span class="detail-icon">💧</span>Humidity
+                </div>
+                <div class="detail-value" id="humidity">--%</div>
+            </div>
+            
+            <div class="weather-detail-card">
+                <div class="detail-title">
+                    <span class="detail-icon">👁️</span>Visibility
+                </div>
+                <div class="detail-value" id="visibility">-- km</div>
+            </div>
+            
+            <div class="weather-detail-card">
+                <div class="detail-title">
+                    <span class="detail-icon">🌡️</span>Pressure
+                </div>
+                <div class="detail-value" id="pressure">-- hPa</div>
+            </div>
+            
+            <div class="weather-detail-card">
+                <div class="detail-title">
+                    <span class="detail-icon">🌅</span>Sunrise
+                </div>
+                <div class="detail-value" id="sunrise">--:--</div>
+            </div>
+            
+            <div class="weather-detail-card">
+                <div class="detail-title">
+                    <span class="detail-icon">🌇</span>Sunset
+                </div>
+                <div class="detail-value" id="sunset">--:--</div>
+            </div>
+        </section>
+
+        <section class="forecast-section" id="forecastSection" style="display: none;">
+            <h3 class="forecast-title">5-Day Forecast</h3>
+            <div class="forecast-container" id="forecastContainer">
+                
+            </div>
+        </section>
+    </div>
+
+    <script src="weather.js"></script> 
+</body>
+</html>
